@@ -1,3 +1,7 @@
+:root {
+	--max: 80vw;
+}
+
 html {
 	box-sizing: border-box;
 }
@@ -16,17 +20,13 @@ html {
 	box-sizing: inherit;
 }
 
-body {
-	background-color: $color__background-body;
-}
-
 a {
 	@include link-transition;
 	color: $color__link;
 }
 
 a:visited {
-
+	color: inherit;
 }
 
 a:hover,
@@ -42,34 +42,7 @@ a:focus {
 	text-decoration: underline;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	clear: both;
-	margin: $size__spacing-unit 0;
-}
-
-h1:not(.site-title),
-h2 {
-	@include post-section-dash;
-}
-
-hr {
-	background-color: $color__text-light;
-	border: 0;
-	height: 2px;
-}
-
 @import "lists";
-
-img {
-	height: auto;
-	max-width: 100%;
-	position: relative;
-}
 
 figure {
 	margin: 0;
@@ -87,6 +60,11 @@ blockquote {
 	cite {
 		color: $color__text-light;
 	}
+}
+
+.site-content {
+	margin: 0 auto;
+	max-width: var(--max);
 }
 
 @import "tables";

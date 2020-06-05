@@ -10,9 +10,49 @@
 		min-height: 90vh;
 
 		.site-branding-container {
-			margin-bottom: auto;
+			display: none;
 		}
 	}
+
+	.inner {
+		display: grid;
+		grid-template-columns: 1fr max-content 1fr;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.logo {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		h1 {
+			line-height: 1;
+			display: block;
+			width: 20vw;
+			@include media(tablet) {
+				width: 10vw;
+			}
+		}
+		h3 {
+			margin-top: .6rem;
+		}
+	}
+
+	nav {
+		font-size: 1.2rem;
+		font-weight: 700;
+		margin-top: var(--gap);
+		ul {
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			justify-content: space-between;
+			li {
+				justify-self: center;
+				}
+			}
+		}
+	
+
 
 	@include media(tablet) {
 		margin: 0;
@@ -23,18 +63,12 @@
 			margin-bottom: 3rem;
 		}
 	}
-}
+} // Site Header end
 
 // Site branding
 
 .site-branding {
-
-	color: $color__text-light;
-	position: relative;
-
-	@include media(tablet) {
-		margin: 0 $size__site-margins;
-	}
+	display: none;
 }
 
 // Site logo
@@ -83,22 +117,7 @@
 // Site title
 
 .site-title {
-	margin: auto;
-	display: inline;
-	color: $color__text-main;
-
-	a {
-		color: $color__text-main;
-
-		&:link,
-		&:visited {
-			color: $color__text-main;
-		}
-
-		&:hover {
-			color: $color__text-hover;
-		}
-	}
+	display: none;
 
 	.featured-image & {
 		margin: 0;
