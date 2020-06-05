@@ -1,0 +1,40 @@
+version: '3.1'
+
+services:
+
+  wordpress:
+    image: wordpress:5.0.3
+    restart: always
+    ports:
+      - 8080:8080
+    env_file:
+      - ./docker/wordpress.env
+    environment:
+      WORDPRESS_DEBUG: 1
+      WORDPRESS_DEBUG_LOG: 1
+      WORDPRESS_DB_HOST: database
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_TABLE_PREFIX: wp_
+    volumes:
+      - wordpress:/var/www/html
+      - ./docker/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - ./docker/ports.conf:/etc/apache2/ports.conf
+      - ./docker/php.ini:/usr/local/etc/php/php.ini
+      - ./wp-content/themes/test-theme:/var/www/html/wp-content/themes/test-theme
+
+  database:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - 3306:3306
+    env_file:
+      - ./docker/mysql.env
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - database:/var/lib/mysql
+
+volumes:
+  wordpress:
+  database:

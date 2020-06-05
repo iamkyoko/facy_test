@@ -1,0 +1,11 @@
+# local docker settings
+docker/*.env
+
+# any sql files used for import/export
+*.sql
+
+# temporary zips of the theme
+*.zip
+
+# thumbnails
+.DS_Store
